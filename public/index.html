@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>By Brompton</title>
+  <meta name="description" content="By Brompton Blog By Zafarali Ahmed">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f7f4ed'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='bold' text-anchor='middle' fill='%231c1917'%3EB%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper:      #f7f4ed;
+      --paper-card: #fbf9f4;
+      --paper-hover:#efebe2;
+      --ink:        #1c1917;
+      --ink-soft:   #292524;
+      --prose:      #44403c;
+      --muted-1:    #57534e;
+      --muted-2:    #78716c;
+      --muted-3:    #a8a29e;
+      --rule:       #d6d0c4;
+      --rule-light: #e7e2d6;
+      --bay:        #9a3412;
+      --bloor:      #0e7490;
+      --serif:      "EB Garamond", Georgia, "Times New Roman", serif;
+      --display:    "Playfair Display", "EB Garamond", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.5;
+    }
+
+    ::selection { background: var(--ink-soft); color: var(--paper); }
+
+    /* ---------- Masthead ---------- */
+
+    .masthead {
+      width: 100%;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .masthead-inner {
+      max-width: 42rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .nameplate {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(2.25rem, 7.5vw, 3.75rem);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .double-rule {
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding-top: 2px;
+    }
+
+    /* ---------- Main ---------- */
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 2.5rem;
+    }
+
+    .editions-kicker {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin-bottom: 1rem;
+    }
+
+    .editions {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* ---------- Edition card ---------- */
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: clamp(1.5rem, 4vw, 1.75rem);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: var(--paper-card);
+      box-shadow: 0 1px 2px rgba(28, 25, 23, 0.06);
+      transition: background-color 200ms ease, border-color 200ms ease;
+    }
+
+    a.card:hover,
+    a.card:focus-visible {
+      background: var(--paper-hover);
+    }
+
+    a.card--bay:hover,
+    a.card--bay:focus-visible   { border-color: rgba(154, 52, 18, 0.8); }
+
+    a.card--bloor:hover,
+    a.card--bloor:focus-visible { border-color: rgba(14, 116, 144, 0.8); }
+
+    a.card:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .region {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .city {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 4vw, 1.875rem);
+      letter-spacing: -0.01em;
+      margin-top: 0.125rem;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 4px;
+      transition: text-decoration-color 200ms ease;
+    }
+
+    a.card:hover .city,
+    a.card:focus-visible .city {
+      text-decoration-color: rgba(28, 25, 23, 0.5);
+    }
+
+    .domain {
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(0.875rem, 2.5vw, 1rem);
+      margin-top: 0.25rem;
+    }
+
+    .card--bay .domain   { color: var(--bay); }
+    .card--bloor .domain { color: var(--bloor); }
+
+    .arrow {
+      display: inline-block;
+      font-style: normal;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      transition: transform 200ms ease;
+    }
+
+    a.card:hover .arrow,
+    a.card:focus-visible .arrow {
+      transform: translateX(4px);
+    }
+
+    .soon-badge {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.625rem;
+      padding: 0.2em 0.55em 0.15em;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bloor);
+      border: 1px solid rgba(14, 116, 144, 0.55);
+      border-radius: 2px;
+      transform: translateY(-3px);
+    }
+
+    .description {
+      margin-top: 0.625rem;
+      font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
+      line-height: 1.625;
+      color: var(--prose);
+    }
+
+    /* ---------- Colophon ---------- */
+
+    .colophon {
+      width: 100%;
+      margin-top: 3rem;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .colophon-inner {
+      max-width: 42rem;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted-2);
+    }
+
+    .colophon-quote { font-style: italic; }
+
+    .colophon-imprint {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--rule-light);
+      font-size: 0.6875rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-3);
+    }
+
+    /* ---------- Responsive & motion ---------- */
+
+    @media (max-width: 480px) {
+      .masthead { padding-top: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Broadsheet Newspaper Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <h1 class="nameplate">By Brompton</h1>
+      <h2 class="subtitle">by Zafarali Ahmed</h2>
+      <div class="double-rule" role="presentation"></div>
+    </div>
+  </header>
+
+  <!-- Literary List of Publications -->
+  <main>
+    <p class="editions-kicker">Select an edition to read</p>
+
+    <div class="editions">
+
+      <!-- San Francisco Bay Area -->
+      <a class="card card--bay" href="https://bay.bybrompton.com" target="_blank" rel="noopener noreferrer">
+        <!--<div class="region">California &middot; Pacific Shore</div>-->
+        <h2 class="city">San Francisco Bay Area</h2>
+        <div class="domain">bay.bybrompton.com <span class="arrow">&rarr;</span></div>
+        <p class="description">Chronicles of car-free living in the California's Bay Area.</p>
+      </a>
+
+      <!-- Toronto — forthcoming -->
+      <a class="card card--bloor" href="https://bloor.bybrompton.com" target="_blank" rel="noopener noreferrer">
+        <div class="region">Ontario &middot; Great Lakes Basin</div>
+        <h2 class="city">Toronto <span class="soon-badge">Soon</span></h2>
+        <div class="domain">bloor.bybrompton.com <span class="arrow">&rarr;</span></div>
+        <p class="description">Traversing the crosstown Bloor-Danforth artery, descending into the wooded Don Valley ravines, and cycling through the winter grit of Lake Ontario.</p>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- Broadsheet Colophon -->
+  <footer class="colophon">
+    <div class="colophon-inner">
+      <p class="colophon-quote">&ldquo;The bicycle is the most civilized conveyance known to man.&rdquo;</p>
+      <div class="colophon-imprint">By Brompton Gazette &middot; Published between San Francisco Bay &amp; Lake Ontario</div>
+    </div>
+  </footer>
+
+</body>
+</html>
